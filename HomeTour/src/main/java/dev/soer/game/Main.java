@@ -46,16 +46,16 @@ public class Main {
 	}
 	
 	private static void parse(String[] command, Player player) {
-		String action = command[0].toLowerCase().intern();
+		String action = command[0].toLowerCase();
 		String direction = null;
 		if (command.length > 1) {
-			direction = command[1].toLowerCase().intern();
+			direction = command[1].toLowerCase();
 		}
 		if(action.equals("go")) {
 			Room move = player.getCurrentRoom().getExit(direction);
 			player.setCurrentRoom(move);
 		}
-		else if(action == "quit") {
+		else if(action.equals("quit")) {
 			running = false;
 		}
 	}

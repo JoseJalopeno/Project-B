@@ -36,7 +36,7 @@ public class Room extends Fixture {
 		
 		// If statement checks if there is actually a room in certain direction
 		if (index >= this.exits.length || this.exits[index] == null) {
-			System.out.println("There is no room in that direction");
+			//System.out.println("There is no room in that direction");
 			
 			// Return the current room is there is not a room in that direction
 			return null;

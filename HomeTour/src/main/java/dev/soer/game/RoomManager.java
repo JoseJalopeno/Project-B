@@ -83,7 +83,7 @@ public class RoomManager {
         Room[] bedroomExits = {smallHallway, null, null, null};
         smallBedroom.setExits(bedroomExits);
         
-        Room[] bathExits = {null, null, null, smallHallway};
+        Room[] bathExits = {null, smallHallway, null, null};
         bathroom.setExits(bathExits); 
        
 	}
