@@ -98,12 +98,15 @@ public class Main {
 		System.out.println("To move around type: go + any direction");
 		System.out.println("To quit game type: quit");
 		System.out.println("To see a map type: map");
+		System.out.println("To look around a room type: look");
+		System.out.println("To grab object type: grab");
+		System.out.println("Grab only works if room has an object");
 		System.out.println("To see instructions again type: instructions");
 		System.out.println("::::::::::::::::::::::");
 	}
 	
 	private static void map(Player p) {
-		if(p.hasKey) {
+		if(p.hasKey) { // prints the map with the secret room as open
 			System.out.println("--------------------------------------------");
 			System.out.println("|                     |                    |");
 			System.out.println("|    Living Room      |      Bedroom       |");
@@ -122,7 +125,7 @@ public class Main {
 			System.out.println("|                     |                    |");
 			System.out.println("--------------------------------------------");
 		}
-		else {
+		else { // prints the map with the secret room closed
 			System.out.println("--------------------------------------------");
 			System.out.println("|                     |                    |");
 			System.out.println("|    Living Room      |      Bedroom       |");
