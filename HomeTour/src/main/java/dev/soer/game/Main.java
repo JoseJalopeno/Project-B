@@ -80,7 +80,7 @@ public class Main {
 		}
 		else if(action.equals("grab") && player.getCurrentRoom().getName().equals("Bathroom")) {
 			player.hasKey = true;
-			System.out.println("You grab the key. Wonder what it opens");
+			System.out.println("You grab the key. Wonder what is inside the secret room\n");
 		}
 		else if(action.equals("instructions")) {
 			instructions();
@@ -107,6 +107,7 @@ public class Main {
 	
 	private static void map(Player p) {
 		if(p.hasKey) { // prints the map with the secret room as open
+			System.out.println("********************South*******************");
 			System.out.println("--------------------------------------------");
 			System.out.println("|                     |                    |");
 			System.out.println("|    Living Room      |      Bedroom       |");
@@ -124,8 +125,10 @@ public class Main {
 			System.out.println("|                                          |");
 			System.out.println("|                     |                    |");
 			System.out.println("--------------------------------------------");
+			System.out.println("********************North*******************");
 		}
 		else { // prints the map with the secret room closed
+			System.out.println("********************South*******************");
 			System.out.println("--------------------------------------------");
 			System.out.println("|                     |                    |");
 			System.out.println("|    Living Room      |      Bedroom       |");
@@ -143,8 +146,8 @@ public class Main {
 			System.out.println("|                                          |");
 			System.out.println("|                     |                    |");
 			System.out.println("--------------------------------------------");
-		}
-			
+			System.out.println("********************North*******************");
+		}			
 	}
+	
 }
-

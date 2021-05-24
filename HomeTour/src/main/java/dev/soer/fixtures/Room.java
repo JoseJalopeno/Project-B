@@ -61,5 +61,4 @@ public class Room extends Fixture {
 	public boolean hasKey() {
 		return this.hasKey;
 	}
-	
 }

@@ -60,7 +60,13 @@ public class RoomManager {
         this.rooms[6] = bathroom;
         
         Room secretRoom = new Room("Secret", "Secret Room",
-        		"Joseph Soer", false);        		
+        		"Did you ever hear the tragedy of Darth Plagueis The Wise? I thought not. It’s not a story the Jedi would tell you.\n"
+        		+ "It’s a Sith legend. Darth Plagueis was a Dark Lord of the Sith, so powerful and so wise he could use\n"
+        		+ "the Force to influence the midichlorians to create life… He had such a knowledge of the dark side\n" 
+        		+ "that he could even keep the ones he cared about from dying. The dark side of the Force is a pathway\n" 
+        		+ "to many abilities some consider to be unnatural. He became so powerful… the only thing he was afraid\n"
+        		+ "of was losing his power, which eventually, of course, he did. Unfortunately, he taught his apprentice\n" 
+        		+ "everything he knew, then his apprentice killed him in his sleep. Ironic. He could save others from death, but not himself.", false);        		
         
         /*
          * North: 0
@@ -88,10 +94,7 @@ public class RoomManager {
         
         Room[] bathExits = {null, smallHallway, null, null};
         bathroom.setExits(bathExits); 
-        
-        Room[] secretExits = {null, entryWay, null, null};
-        secretRoom.setExits(secretExits);
-       
+               
 	}
 	
 }
