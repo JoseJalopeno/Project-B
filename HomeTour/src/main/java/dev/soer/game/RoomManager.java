@@ -24,40 +24,43 @@ public class RoomManager {
 				"The Entryway",
 				"a small entryway",
 				"A small entryway to a house. To the south there is the living room. "
-				+ "The north is the dining room. ");
+				+ "The north is the dining room. ", false);
 		this.rooms[0] = entryWay;
         this.startingRoom = entryWay;
         
         Room livingRoom = new Room(
 			"Living Room", "the living room", 
 			"The main room for the family in the house. To the north is the small entryway. \n"
-			+ "To the west is a small hallway. ");
+			+ "To the west is a small hallway. ", false);
         this.rooms[1] = livingRoom;
         
         Room diningRoom = new Room(
 			"Dining Room", "a small dining room", 
 			"The dining room with a table set for five and a china cabinet. \n"
-			+ "To the south there is a living room. To the west is the kitchen. ");
+			+ "To the south there is a living room. To the west is the kitchen. ", false);
         this.rooms[2] = diningRoom;
         
         Room kitchen = new Room(
 			"Kitchen", "a large kitchen",
 			"A large kitchen. To the south there is a small hallway.\n"
-			+ "To the east there is the diningroom. ");
+			+ "To the east there is the diningroom. ", false);
         this.rooms[3] = kitchen;
 	
         Room smallHallway = new Room("Small Hallway", "small connecting hallway",
         		"Kitchen to the north. A small bedroom to the south.\n "
-        		+ "Bathroom to the west. Living room to the east. ");
+        		+ "Bathroom to the west. Living room to the east. ", false);
         this.rooms[4] = smallHallway;
         
         Room smallBedroom = new Room("Small bedroom", "a small bedroom", 
-        		"A small bedroom currently used as an office. To the north there is a small hallway. ");
+        		"A small bedroom currently used as an office. To the north there is a small hallway. ", false);
         this.rooms[5] = smallBedroom;
         
         Room bathroom = new Room("Bathroom", "small bathroom",
-        		"small bathroom with a washer and dryer. To the east is a small hallway. ");
+        		"small bathroom with a washer and dryer. To the east is a small hallway. ", true);
         this.rooms[6] = bathroom;
+        
+        Room secretRoom = new Room("Secret", "Secret Room",
+        		"Joseph Soer", false);        		
         
         /*
          * North: 0
@@ -65,7 +68,7 @@ public class RoomManager {
          * South: 2
          * West: 3
          */
-        Room[] entryExits = {diningRoom, null, livingRoom, null};
+        Room[] entryExits = {diningRoom, null, livingRoom, secretRoom};
         entryWay.setExits(entryExits);
         
         Room[] livingExits = {entryWay, null, null, smallHallway};
@@ -85,6 +88,9 @@ public class RoomManager {
         
         Room[] bathExits = {null, smallHallway, null, null};
         bathroom.setExits(bathExits); 
+        
+        Room[] secretExits = {null, entryWay, null, null};
+        secretRoom.setExits(secretExits);
        
 	}
 	

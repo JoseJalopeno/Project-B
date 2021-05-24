@@ -7,14 +7,15 @@ import dev.soer.fixtures.Room;
 public class Main { 
 	
 	static boolean running = true;
-	
+	static RoomManager rm = new RoomManager();
 	public static void main(String[] args) {
-		RoomManager rm = new RoomManager();
+		
 		Scanner sc = new Scanner(System.in);
 		sc.useDelimiter(System.lineSeparator());
 		
 		rm.init();
 		Player p = new Player(rm.startingRoom);
+		instructions();
 		while(running) {
 			printRoom(p);
 			String input = sc.next();
@@ -52,12 +53,95 @@ public class Main {
 			direction = command[1].toLowerCase();
 		}
 		if(action.equals("go")) {
-			Room move = player.getCurrentRoom().getExit(direction);
-			player.setCurrentRoom(move);
+			if(player.getCurrentRoom().getExit(direction) != null) {
+				Room move = player.getCurrentRoom().getExit(direction);
+				if(!move.getName().equals("Secret")) {
+					player.setCurrentRoom(move);
+				}
+				else if(player.hasKey && move.getName().equals("Secret")) {
+					player.setCurrentRoom(move);
+				}
+				else {
+					System.out.println("Looks like you need a key\n");
+				}
+			}
+			else {
+				System.out.println("There is no exit in that direction\n");
+			}
+		}
+		else if(action.equals("look")) {
+			if(player.getCurrentRoom().hasKey()) {
+				System.out.println("There is a key here\n");
+			}
+			else {
+				System.out.println("There is nothing in the room\n");
+			}
+			
+		}
+		else if(action.equals("grab") && player.getCurrentRoom().getName().equals("Bathroom")) {
+			player.hasKey = true;
+			System.out.println("You grab the key. Wonder what it opens");
+		}
+		else if(action.equals("instructions")) {
+			instructions();
+		}
+		else if(action.equals("map")) {
+			map(player);
 		}
 		else if(action.equals("quit")) {
 			running = false;
 		}
+	}
+	
+	private static void instructions() {
+		System.out.println(":::::INSTRUCTIONS:::::");
+		System.out.println("To move around type: go + any direction");
+		System.out.println("To quit game type: quit");
+		System.out.println("To see a map type: map");
+		System.out.println("To see instructions again type: instructions");
+		System.out.println("::::::::::::::::::::::");
+	}
+	
+	private static void map(Player p) {
+		if(p.hasKey) {
+			System.out.println("--------------------------------------------");
+			System.out.println("|                     |                    |");
+			System.out.println("|    Living Room      |      Bedroom       |");
+			System.out.println("|                     |                    |");
+			System.out.println("|                     |  ------------------|");
+			System.out.println("|                               |          |");
+			System.out.println("|-   -----------------|         | Bathroom |");
+			System.out.println("|           |         | Hallway            |");
+			System.out.println("| Entry Way      ?    |         |          |");
+			System.out.println("|           |         |         |          |");
+			System.out.println("|-   -----------------|   -----------------|");
+			System.out.println("|                     |                    |");
+			System.out.println("|                     |                    |");
+			System.out.println("|      Dining Room    |       Kitchen      |");
+			System.out.println("|                                          |");
+			System.out.println("|                     |                    |");
+			System.out.println("--------------------------------------------");
+		}
+		else {
+			System.out.println("--------------------------------------------");
+			System.out.println("|                     |                    |");
+			System.out.println("|    Living Room      |      Bedroom       |");
+			System.out.println("|                     |                    |");
+			System.out.println("|                     |  ------------------|");
+			System.out.println("|                               |          |");
+			System.out.println("|-   -----------------|         | Bathroom |");
+			System.out.println("|           |         | Hallway            |");
+			System.out.println("| Entry Way |         |         |          |");
+			System.out.println("|           |         |         |          |");
+			System.out.println("|-   -----------------|   -----------------|");
+			System.out.println("|                     |                    |");
+			System.out.println("|                     |                    |");
+			System.out.println("|      Dining Room    |       Kitchen      |");
+			System.out.println("|                                          |");
+			System.out.println("|                     |                    |");
+			System.out.println("--------------------------------------------");
+		}
+			
 	}
 }
 

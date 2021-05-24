@@ -3,10 +3,12 @@ package dev.soer.fixtures;
 public class Room extends Fixture {
 
 	Room[] exits = new Room[4]; // 0 - North, 1 - East, 2 - South, 3 - West
+	boolean hasKey;
 	
 	// constructor
-	public Room(String name, String shortDescription, String longDescription) {
+	public Room(String name, String shortDescription, String longDescription, boolean hasKey) {
 		super(name, shortDescription, longDescription);
+		this.hasKey = hasKey;
 	}
 	
 	public Room[] getExits() {
@@ -38,7 +40,7 @@ public class Room extends Fixture {
 		if (index >= this.exits.length || this.exits[index] == null) {
 			//System.out.println("There is no room in that direction");
 			
-			// Return the current room is there is not a room in that direction
+			// Return the null if there is not a room in that direction
 			return null;
 		}
 		
@@ -54,5 +56,10 @@ public class Room extends Fixture {
 	public void setExits(Room exit, int index) {
 		this.exits[index] = exit;
 	}	
+	
+	// see if room has the key
+	public boolean hasKey() {
+		return this.hasKey;
+	}
 	
 }
